@@ -24,7 +24,7 @@ class Admin extends Component {
   }
 
   fetchProducts = () => {
-    Axios.get(`${API_URL}/products`)
+    Axios.get(`${API_URL}/products/get`)
       .then((result) => {
         this.setState({ productList: result.data });
       })
@@ -50,7 +50,7 @@ class Admin extends Component {
   }
 
   saveBtnHandler = () => {
-    Axios.patch(`${API_URL}/products/${this.state.editId}`, {
+    Axios.patch(`${API_URL}/products/edit-products/${this.state.editId}`, {
         productName: this.state.editProductName,
         price: parseInt(this.state.editPrice),
         productImage: this.state.editProductImage,
@@ -69,7 +69,7 @@ class Admin extends Component {
   deleteBtnHandler = (deleteId) => {
     const confirmDelete = window.confirm("Are you sure you want delete this event?");
     if (confirmDelete) {
-        Axios.delete(`${API_URL}/products/${deleteId}`)
+        Axios.delete(`${API_URL}/products/delete-products/${deleteId}`)
         .then(() => {
             this.fetchProducts();
         })
@@ -132,7 +132,7 @@ class Admin extends Component {
   };
 
   addNewProduct = () => {
-    Axios.post(`${API_URL}/products`, {
+    Axios.post(`${API_URL}/products/add-products`, {
         productName: this.state.addProductName,
         price: parseInt(this.state.addPrice),
         productImage: this.state.addProductImage,

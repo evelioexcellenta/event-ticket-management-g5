@@ -13,7 +13,7 @@ function Cart(props) {
     });
 
     const deleteCartHandler = (cartId) => {
-        Axios.delete(`${API_URL}/carts/${cartId}`)
+        Axios.delete(`${API_URL}/carts/delete${cartId}`)
             .then(() => {
                 props.getCartData(props.userGlobal.id)
             })
