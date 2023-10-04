@@ -19,7 +19,7 @@ function Profile(props) {
 
     // Fetch user data
     const fetchUserData = () => {
-        Axios.get(`${API_URL}/users/${props.userGlobal.id}`)
+        Axios.get(`${API_URL}/users/get${props.userGlobal.id}`)
             .then((result) => {
                 setUserData(result.data);
                 setNewRole(result.data.role); // Set initial role
@@ -46,7 +46,7 @@ function Profile(props) {
 
     // Fetch user's recent cart items
     const fetchCartItems = () => {
-        Axios.get(`${API_URL}/carts`, {
+        Axios.get(`${API_URL}/carts/get`, {
             params: {
                 userId: props.userGlobal.id,
             },
@@ -105,7 +105,7 @@ function Profile(props) {
         };
 
         // Send a PUT request to update user data
-        Axios.put(`${API_URL}/users/${props.userGlobal.id}`, updatedUserData)
+        Axios.put(`${API_URL}/users/get${props.userGlobal.id}`, updatedUserData)
             .then(() => {
                 alert("User data updated successfully.");
                 // Clear input fields and fetch updated user data

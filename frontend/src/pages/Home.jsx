@@ -12,7 +12,7 @@ const Home = (props) => {
 
   const fetchProducts = async () => {
     try {
-      const response = await Axios.get(`${API_URL}/products`);
+      const response = await Axios.get(`${API_URL}/products/get`);
       if (response.status === 200) {
         setProducts(response.data.slice(0, 5)); // Limit to 5 products
       }
