@@ -40,7 +40,7 @@ function ProductDetail(props) {
 
     const addToCartHandler = () => {
         // Check apakah user sudah memiliki barang tsb di cart
-        Axios.get(`${API_URL}/carts`, {
+        Axios.get(`${API_URL}/carts/get`, {
             params: {
                 userId: props.userGlobal.id,
                 productId: productData.id,
@@ -48,7 +48,7 @@ function ProductDetail(props) {
         })
             .then((result) => {
                 if (result.data.length) {
-                    Axios.patch(`${API_URL}/carts/${result.data[0].id}`, {
+                    Axios.patch(`${API_URL}/carts/patch${result.data[0].id}`, {
                         quantity: result.data[0].quantity + quantity
                     })
                         .then(() => {
@@ -59,7 +59,7 @@ function ProductDetail(props) {
                             alert("Terjadi kesalahan di server");
                         })
                 } else {
-                    Axios.post(`${API_URL}/carts`, {
+                    Axios.post(`${API_URL}/carts/add-carts`, {
                         userId: props.userGlobal.id,
                         productId: productData.id,
                         price: productData.price,

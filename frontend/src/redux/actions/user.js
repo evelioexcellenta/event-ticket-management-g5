@@ -3,14 +3,14 @@ import { API_URL } from "../../constants/API"
 
 export const registerUser = ({ fullname, username, email, password, confirmPassword }) => {
     return (dispatch) => {
-        Axios.post(`${API_URL}/users`, {
-            fullname,
-            username,
-            email,
-            password,
-            confirmPassword,
-            role: "user"
-        })
+        Axios.post(`${API_URL}/users/add-users`, {
+                fullname,
+                username,
+                email,
+                password,
+                confirmPassword,
+                role: "user"
+            })
             .then((result) => {
                 delete result.data.password
                 delete result.data.confirmPassword
@@ -23,17 +23,17 @@ export const registerUser = ({ fullname, username, email, password, confirmPassw
             .catch(() => {
                 "gagal mendaftar user"
             })
-        }
+    }
 }
 
 
-export const loginUser = ({ username, password}) => {
+export const loginUser = ({ username, password }) => {
     return (dispatch) => {
-        Axios.get(`${API_URL}/users`, {
-            params: {
-                username,
-            }
-        })
+        Axios.get(`${API_URL}/users/get`, {
+                params: {
+                    username,
+                }
+            })
             .then((result) => {
                 // console.log(result.data)
                 if (result.data.length) {
@@ -67,7 +67,7 @@ export const loginUser = ({ username, password}) => {
 
 export const checkEmail = (email) => {
     return (dispatch) => {
-        return fetch(`${API_URL}/users?email=${email}`)
+        return fetch(`${API_URL}/users/get?email=${email}`)
             .then((response) => response.json())
             .then((data) => {
                 if (data.length > 0) {
@@ -107,11 +107,11 @@ export const logoutUser = () => {
 
 export const userKeepLogin = (userData) => {
     return (dispatch) => {
-        Axios.get(`${API_URL}/users`, {
-            params: {
-                id: userData.id,
-            }
-        })
+        Axios.get(`${API_URL}/users/get`, {
+                params: {
+                    id: userData.id,
+                }
+            })
             .then((result) => {
                 delete result.data[0].password
                 localStorage.setItem("userDataEvent", JSON.stringify(result.data[0]))
@@ -133,4 +133,3 @@ export const checkStorage = () => {
         type: "CHECK_STORAGE"
     }
 }
-
