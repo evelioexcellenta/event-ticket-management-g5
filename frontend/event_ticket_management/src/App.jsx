@@ -19,6 +19,7 @@ import History from "./pages/History"
 import Profile from "./pages/Profile"
 import Organizer from "./pages/Organizer"
 import Footer from "./components/Footer"
+import Login2 from "./pages/auth/Login2"
 
 function App(props) {
   useEffect(() => {

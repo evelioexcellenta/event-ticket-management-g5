@@ -32,46 +32,46 @@ export const registerUser = ({
   }
 }
 
-export const loginUser = ({ username, password }) => {
-  return (dispatch) => {
-    Axios.get(`${API_URL}/users`, {
-      params: {
-        username,
-      },
-    })
-      .then((result) => {
-        // console.log(result.data)
-        if (result.data.length) {
-          if (password === result.data[0].password) {
-            delete result.data[0].password
-            localStorage.setItem(
-              "userDataEvent",
-              JSON.stringify(result.data[0])
-            )
-            dispatch({
-              type: "USER_LOGIN",
-              payload: result.data[0],
-            })
-          } else {
-            // Error wrong password
-            dispatch({
-              type: "USER_ERROR",
-              payload: "Wrong Password",
-            })
-          }
-        } else {
-          // Error username not found
-          dispatch({
-            type: "USER_ERROR",
-            payload: "User Not Found",
-          })
-        }
-      })
-      .catch((err) => {
-        alert("Terjadi kesalahan di server")
-      })
-  }
-}
+// export const loginUser = ({ username, password }) => {
+//   return (dispatch) => {
+//     Axios.get(`${API_URL}/users`, {
+//       params: {
+//         username,
+//       },
+//     })
+//       .then((result) => {
+//         // console.log(result.data)
+//         if (result.data.length) {
+//           if (password === result.data[0].password) {
+//             delete result.data[0].password
+//             localStorage.setItem(
+//               "userDataEvent",
+//               JSON.stringify(result.data[0])
+//             )
+//             dispatch({
+//               type: "USER_LOGIN",
+//               payload: result.data[0],
+//             })
+//           } else {
+//             // Error wrong password
+//             dispatch({
+//               type: "USER_ERROR",
+//               payload: "Wrong Password",
+//             })
+//           }
+//         } else {
+//           // Error username not found
+//           dispatch({
+//             type: "USER_ERROR",
+//             payload: "User Not Found",
+//           })
+//         }
+//       })
+//       .catch((err) => {
+//         alert("Terjadi kesalahan di server")
+//       })
+//   }
+// }
 
 export const checkEmail = (email) => {
   return (dispatch) => {
@@ -129,7 +129,7 @@ export const userKeepLogin = (userData) => {
         })
       })
       .catch(() => {
-        alert("terjadi kesalahan di server")
+        // alert("terjadi kesalahan di server")
       })
   }
 }

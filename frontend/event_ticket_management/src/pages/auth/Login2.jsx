@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
 // import { checkEmailLogin } from "../../api/user"
+import { useToast } from "@chakra-ui/react"
 import { API_URL } from "../../constants/API"
 
 const Login2 = () => {
@@ -9,6 +10,7 @@ const Login2 = () => {
   const [password, setPassword] = useState("")
   const [msg, setMsg] = useState("")
   const navigate = useNavigate()
+  const toast = useToast()
 
   const Auth = async (e) => {
     e.preventDefault()
@@ -25,7 +27,15 @@ const Login2 = () => {
         email: email,
         password: password,
       })
-      navigate("/home")
+      navigate("/")
+      toast({
+        title: "Login Succeed",
+        description: "Enjoy !!",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      })
     } catch (error) {
       if (error.response) {
         setMsg(error.response.data)

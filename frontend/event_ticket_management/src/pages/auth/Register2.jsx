@@ -1,8 +1,6 @@
 import React, { useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
-// import { useDispatch } from "react-redux"
-// import { registerUser } from "../../features/user/userSlice"
 // import { checkEmail, checkUsername } from "../../api/user"
 import { useToast } from "@chakra-ui/react"
 import { API_URL } from "../../constants/API"

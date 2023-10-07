@@ -70,15 +70,8 @@ const Home = (props) => {
             ))}
           </Carousel>
         </Container>
-        <Search />
       </div>
-      {/* {props.userGlobal.email ? (
-      ) : (
-        <div className="mt-5 text-center">
-          <h1>Interested?</h1>
-          <p>Explore more by logging in</p>
-        </div>
-      )} */}
+      <Search />
     </div>
   )
 }
