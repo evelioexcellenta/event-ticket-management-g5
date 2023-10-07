@@ -27,7 +27,7 @@ class Home extends React.Component {
   }
 
   fetchProducts = () => {
-    Axios.get(`${API_URL}/products`)
+    Axios.get(`${API_URL}/products/get`)
       .then((result) => {
         this.setState({
           productList: result.data,
