@@ -6,5 +6,4 @@ routers.get('/get', usersController.getData)
 routers.post('/add-users', usersController.addData)
 
 
-
 module.exports = routers

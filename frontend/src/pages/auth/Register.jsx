@@ -125,8 +125,6 @@ function Register(props) {
                         <Button><Link href="/login" linkDecoration="none">Or login</Link></Button>
                     </HStack>
                 </Stack>
-
-
             </Container>
         </div>
     )

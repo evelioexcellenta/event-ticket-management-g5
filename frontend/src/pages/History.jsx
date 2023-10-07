@@ -8,7 +8,7 @@ function History(props) {
     const [transactionDetails, setTransactionDetails] = useState([]);
 
     const fetchTransactions = () => {
-        Axios.get(`${API_URL}/transactions`, {
+        Axios.get(`${API_URL}/transactions/get`, {
             params: {
                 userId: props.userGlobal.id,
             },

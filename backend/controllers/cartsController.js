@@ -15,8 +15,8 @@ module.exports = {
 
     addData: (req, res) => {
         console.log(req.body)
-        let { productName, price, productImage, description, category } = req.body
-        let insertQuery = `Insert into carts values (null,${db.escape(productName)},${db.escape(price)},${db.escape(productImage)},${db.escape(description)},${db.escape(category)})`
+        let { userId, productId, price, productName, productImage, quantity } = req.body
+        let insertQuery = `Insert into carts values (${db.escape(userId)},${db.escape(productId)},${db.escape(price)},${db.escape(productName)},${db.escape(productImage)},${db.escape(quantity)},null)`
 
         console.log(insertQuery)
         db.query(insertQuery, (err, results) => {

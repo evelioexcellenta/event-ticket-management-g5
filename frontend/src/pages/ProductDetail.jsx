@@ -17,7 +17,7 @@ function ProductDetail(props) {
     const [quantity, setQuantity] = useState(1);
 
     const fetchProductData = () => {
-        Axios.get(`${API_URL}/products/${productId}`)
+        Axios.get(`${API_URL}/products/get?id=${productId}`)
             .then((result) => {
                 if (result.data) {
                     setProductData(result.data);
@@ -47,18 +47,18 @@ function ProductDetail(props) {
             }
         })
             .then((result) => {
-                if (result.data.length) {
-                    Axios.patch(`${API_URL}/carts/patch${result.data[0].id}`, {
-                        quantity: result.data[0].quantity + quantity
-                    })
-                        .then(() => {
-                            alert("Berhasil menambahkan barang");
-                            props.getCartData(props.userGlobal.id)
-                        })
-                        .catch(() => {
-                            alert("Terjadi kesalahan di server");
-                        })
-                } else {
+                // if (result.data.length) {
+                //     Axios.patch(`${API_URL}/carts/edit-carts/${result.data[0].id}`, {
+                //         quantity: result.data[0].quantity + quantity
+                //     })
+                //         .then(() => {
+                //             alert("Berhasil menambahkan barang");
+                //             props.getCartData(props.userGlobal.id)
+                //         })
+                //         .catch(() => {
+                //             alert("Terjadi kesalahan di server");
+                //         })
+                // } else {
                     Axios.post(`${API_URL}/carts/add-carts`, {
                         userId: props.userGlobal.id,
                         productId: productData.id,
@@ -74,7 +74,7 @@ function ProductDetail(props) {
                         .catch(() => {
                             alert("Terjadi kesalahan di server");
                         });
-                };
+                // };
             })
     }
 

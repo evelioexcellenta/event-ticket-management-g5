@@ -3,8 +3,8 @@ module.exports = {
     getData: (req, res) => {
         let scriptQuery = `Select * from products`
 
-        if (req.query && req.query.productName) {
-            scriptQuery = `Select * from products where productName = ${db.escape(req.query.productName)};`
+        if (req.query && req.query.id) {
+            scriptQuery = `Select * from products where id = ${db.escape(req.query.id)};`
         }
 
         db.query(scriptQuery, (err, results) => {

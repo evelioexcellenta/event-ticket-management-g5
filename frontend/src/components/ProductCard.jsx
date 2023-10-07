@@ -10,26 +10,26 @@ function ProductCard(props) {
     
     const addToCartHandler = () => {
         // Check apakah user sudah memiliki barang tsb di cart
-        Axios.get(`${API_URL}/carts`, {
+        Axios.get(`${API_URL}/carts/get`, {
             params: {
                 userId: props.userGlobal.id,
                 productId: props.productData.id,
             }
         })
         .then((result) => {
-            if (result.data.length) {
-                Axios.patch(`${API_URL}/carts/${result.data[0].id}`, {
-                    quantity: result.data[0].quantity + 1
-                })
-                .then(() => {
-                    alert("Berhasil menambahkan barang");
-                    props.getCartData(props.userGlobal.id)
-                })
-                .catch(() => {
-                    alert("Terjadi kesalahan di server");
-                })
-            } else {
-                Axios.post(`${API_URL}/carts`, {
+            // if (result.data.length) {
+            //     Axios.patch(`${API_URL}/carts/edit-carts/${result.data[0].id}`, {
+            //         quantity: result.data[0].quantity + 1
+            //     })
+            //     .then(() => {
+            //         alert("Berhasil menambahkan barang");
+            //         props.getCartData(props.userGlobal.id)
+            //     })
+            //     .catch(() => {
+            //         alert("Terjadi kesalahan di server");
+            //     })
+            // } else {
+                Axios.post(`${API_URL}/carts/add-carts`, {
                     userId: props.userGlobal.id,
                     productId: props.productData.id,
                     price: props.productData.price,
@@ -44,7 +44,7 @@ function ProductCard(props) {
                 .catch(() => {
                     alert("Terjadi kesalahan di server");
                 });
-            };
+            // };
         })
     }
 
