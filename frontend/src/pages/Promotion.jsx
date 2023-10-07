@@ -6,10 +6,11 @@ import {
 } from "react-share"
 import { EmailIcon, FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share"
 import { API_URL } from "../constants/API"
+import React, { useState } from "react";
 
-export const ShareButtons = ({ user }) => {
-  const shareUrl = `${API_URL}/carts/get`
-  const title = eventDetails.title
+export const ShareButtons = (props) => {
+  const shareUrl = `${API_URL}/product-detail/${props.productData.id}`
+  const title = "Your product is inside this link :"
   const [copySuccess, setCopySuccess] = useState(false)
 
   const handleCopyClick = async () => {

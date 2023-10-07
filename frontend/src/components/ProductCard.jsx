@@ -59,7 +59,7 @@ function ProductCard(props) {
         </div>
         <div className="d-flex flex-row">
           <div className="justify-content-end">
-            <ShareButtons user={props.userGlobal.id} />
+          <ShareButtons productData={props.productData} />
           </div>
           <div className="justify-content-end">
             <button onClick={addToCartHandler} className="btn btn-primary mt-2">
