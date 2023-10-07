@@ -18,4 +18,5 @@ const { cartsRouter } = require('./routers')
 app.use('/products', productsRouter)
 app.use('/users', usersRouter)
 app.use('/carts', cartsRouter)
+
 app.listen(PORT, () => console.log('api running :', PORT));
