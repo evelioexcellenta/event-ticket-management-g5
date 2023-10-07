@@ -54,7 +54,7 @@ function App(props) {
             <Route Component={Profile} path="/user-profile" />
             <Route Component={Organizer} path="/organizer-dashboard" />
           </Routes>
-          <Footer />
+          {/* <Footer /> */}
         </BrowserRouter>
       </div>
     )
