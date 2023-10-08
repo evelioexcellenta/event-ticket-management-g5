@@ -6,7 +6,7 @@ import {
 } from "react-share"
 import { EmailIcon, FacebookIcon, TwitterIcon, WhatsappIcon } from "react-share"
 import { API_URL } from "../constants/API"
-import React, { useState } from "react"
+import React, { useState } from "react";
 
 export const ShareButtons = (props) => {
   const shareUrl = `${API_URL}/product-detail/${props.productData.id}`
@@ -24,19 +24,20 @@ export const ShareButtons = (props) => {
     }
   }
   return (
-    <div>
+    <div className="py-2 overflow-x-hidden">
+      <h3 className="text-xl font-semibold">Share Event : {title}</h3>
       <span className="flex overflow-x-auto my-4">
-        <EmailShareButton subject={title} className="mr-4">
-          <EmailIcon iconFillColor="white" round={true} size={50} />
+        <EmailShareButton url={shareUrl} subject={title} className="mr-4">
+          <EmailIcon iconFillColor="white" round={true} />
         </EmailShareButton>
-        <FacebookShareButton quote={title} className="mr-4">
-          <FacebookIcon iconFillColor="white" round={true} size={50} />
+        <FacebookShareButton url={shareUrl} quote={title} className="mr-4">
+          <FacebookIcon iconFillColor="white" round={true} />
         </FacebookShareButton>
-        <TwitterShareButton title={title} className="mr-4">
-          <TwitterIcon iconFillColor="white" round={true} size={50} />
+        <TwitterShareButton url={shareUrl} title={title} className="mr-4">
+          <TwitterIcon iconFillColor="white" round={true} />
         </TwitterShareButton>
-        <WhatsappShareButton title={title} className="mr-4">
-          <WhatsappIcon iconFillColor="white" round={true} size={50} />
+        <WhatsappShareButton url={shareUrl} title={title} className="mr-4">
+          <WhatsappIcon iconFillColor="white" round={true} />
         </WhatsappShareButton>
       </span>
       <span className="flex justify-between items-center p-2 bg-slate-100 rounded-xl">
@@ -51,23 +52,3 @@ export const ShareButtons = (props) => {
     </div>
   )
 }
-
-/*
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-*/

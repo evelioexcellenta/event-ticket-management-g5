@@ -5,6 +5,7 @@ import Axios from "axios"
 import { connect } from "react-redux"
 import { API_URL } from "../constants/API"
 import Search from "../pages/Search"
+import ProductCard from "../components/ProductCard"
 
 const Home = (props) => {
   const [products, setProducts] = useState([])
