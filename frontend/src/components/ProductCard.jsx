@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import "../assets/styles/ProductCard.css"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import Axios from "axios"
 import { API_URL } from "../constants/API"
 import { getCartData } from "../redux/actions/cart"
 import { ShareButtons } from "../pages/Promotion"
+import share from "../assets/share.png"
 
 function ProductCard(props) {
   const addToCartHandler = () => {
@@ -48,26 +49,64 @@ function ProductCard(props) {
   }
 
   return (
-    <div className="card product-card">
-      <img src={props.productData.productImage} alt="" />
-      <div className="mt-1">
-        <div>
-          <Link to={`/product-detail/${props.productData.id}`}>
-            <h4>{props.productData.productName}</h4>
-          </Link>
-          <span className="text-muted">Rp. {props.productData.price}</span>
-        </div>
-        <div className="d-flex flex-row">
-          <div className="justify-content-end">
-          <ShareButtons productData={props.productData} />
+    <div>
+      <div className="card product-card">
+        <img src={props.productData.productImage} alt="" />
+        <div className="mt-1">
+          <div>
+            <Link to={`/product-detail/${props.productData.id}`}>
+              <h4>{props.productData.productName}</h4>
+            </Link>
+            <span className="text-muted">Rp. {props.productData.price}</span>
           </div>
-          <div className="justify-content-end">
-            <button onClick={addToCartHandler} className="btn btn-primary mt-2">
-              Add to Cart
-            </button>
+          <div className="d-flex flex-row justify-center align-items-center">
+            <div className="col ">
+              <button
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modal"
+              >
+                <img
+                  src={share}
+                  alt="share button"
+                  width={"50px"}
+                  height={"50px"}
+                />
+              </button>
+            </div>
+            <div className="col ">
+              <button
+                onClick={addToCartHandler}
+                className="btn btn-primary mt-2"
+              >
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
       </div>
+      {
+        <div class="modal" tabindex="-1" id="modal">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 className="text-xl font-semibold text-black">
+                  Share Event :{" "}
+                </h3>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <ShareButtons />
+              </div>
+            </div>
+          </div>
+        </div>
+      }
     </div>
   )
 }
