@@ -9,9 +9,14 @@ import { API_URL } from "../constants/API"
 import React, { useState } from "react"
 
 export const ShareButtons = (props) => {
-  const shareUrl = `${API_URL}/product-detail/${props.productData.id}`
+  const productId = props.productData.id
+  const shareUrl = `${API_URL}/product-detail/${productId}`
+  // const shareUrl = `${API_URL}/product-detail/${productId}`
   const title = "Your product is inside this link :"
   const [copySuccess, setCopySuccess] = useState(false)
+
+  console.log(props.productData.id)
+  console.log(props.productData.productName)
 
   const handleCopyClick = async () => {
     try {
@@ -26,16 +31,13 @@ export const ShareButtons = (props) => {
   return (
     <div>
       <span className="flex overflow-x-auto my-4">
-        <EmailShareButton subject={title} className="mr-4">
+        <EmailShareButton subject={title} className="mr-4" url={shareUrl}>
           <EmailIcon iconFillColor="white" round={true} size={50} />
         </EmailShareButton>
-        <FacebookShareButton quote={title} className="mr-4">
-          <FacebookIcon iconFillColor="white" round={true} size={50} />
-        </FacebookShareButton>
-        <TwitterShareButton title={title} className="mr-4">
+        <TwitterShareButton title={title} className="mr-4" url={shareUrl}>
           <TwitterIcon iconFillColor="white" round={true} size={50} />
         </TwitterShareButton>
-        <WhatsappShareButton title={title} className="mr-4">
+        <WhatsappShareButton title={title} className="mr-4" url={shareUrl}>
           <WhatsappIcon iconFillColor="white" round={true} size={50} />
         </WhatsappShareButton>
       </span>

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "../assets/styles/ProductCard.css"
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { connect } from "react-redux"
 import Axios from "axios"
 import { API_URL } from "../constants/API"
@@ -72,6 +72,7 @@ function ProductCard(props) {
                   width={"50px"}
                   height={"50px"}
                 />
+                {/* hello */}
               </button>
             </div>
             <div className="col ">
@@ -84,14 +85,12 @@ function ProductCard(props) {
             </div>
           </div>
         </div>
-      </div>
-      {
-        <div class="modal" tabindex="-1" id="modal">
-          <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header">
+        <div className="modal" tabindex="-1" id="modal">
+          <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+              <div className="modal-header">
                 <h3 className="text-xl font-semibold text-black">
-                  Share Event :{" "}
+                  Share Event :{props.productData.productName}
                 </h3>
                 <button
                   type="button"
@@ -100,13 +99,16 @@ function ProductCard(props) {
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
-                <ShareButtons />
+              <div className="modal-body">
+                <ShareButtons productData={props.productData}/>
               </div>
             </div>
           </div>
         </div>
-      }
+      </div>
+      
+       
+      
     </div>
   )
 }
